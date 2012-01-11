@@ -1,14 +1,14 @@
 html {
-    background-color: #E1DFD3;
+    background: #ddcdcd url('http://db.tt/imYmopVu') no-repeat center top;
 }
 body {
-    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-family: Georgia, serif;
     margin: 1.5em auto;
     padding: 1.5em;
     background-color: white;
     color: #4D4B39;
     max-width: 35em;
-    border: 0.75em solid #A6A59C;
+    border: 0.75em solid #bdd2e5;
     line-height: 1.5em;
 }
 p {
@@ -16,14 +16,14 @@ p {
 }
 h1 {
     background-color: #4D4B39;
-    color: #E1DFD3;
+    color: #ddcdcd;
     font-size: 200%;
     padding: 0.75em;
     margin: -0.75em -0.75em 0.75em -0.75em;
 }
 h2 {
     background-color: #4D4B39;
-    color: #88a75d;
+    color: #bdd2e5;
     font-size: 150%;
     padding: 1em;
     margin: -1em -1em 1em -1em;
