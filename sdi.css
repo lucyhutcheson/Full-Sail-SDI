@@ -6,24 +6,24 @@ body {
     margin: 1.5em auto;
     padding: 1.5em;
     background-color: white;
-    color: #003366;
+    color: #921e1e;
     max-width: 35em;
-    border: 0.75em solid #bdd2e5;
+    border: 0.75em solid #b89f7b;
     line-height: 1.5em;
 }
 p {
     margin: 1.5em 0;
 }
 h1 {
-    background-color: #003366;
-    color: #ddcdcd;
+    background-color: #921e1e;
+    color: #e2d0b7;
     font-size: 200%;
     padding: 0.75em;
     margin: -0.75em -0.75em 0.75em -0.75em;
 }
 h2 {
-    background-color: #003366;
-    color: #bdd2e5;
+    background-color: #921e1e;
+    color: #b89f7b;
     font-size: 150%;
     padding: 1em;
     margin: -1em -1em 1em -1em;

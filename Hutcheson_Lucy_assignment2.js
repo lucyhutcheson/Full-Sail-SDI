@@ -54,26 +54,44 @@ console.log(fullGreeting);
 
 
 
-var dogNamesWithSpaces = ['Percy', 'Fifi', 'Butch', 'Samson'],
-	wholeMinutesPerDog = [ 45, 20, 30, 60 ];
+var dogStylist = "Emily",
+	daysWorking = 8,
+	
+	dogNames = ['Percy', 'Fifi', 'Butch', 'Samson'],
+	wholeMinutesPerDog = [ 15, 20, 30, 10 ];
+
+
+var washAllDogs = function(dogNames, minutesPerDog) {
+	
+	var dogsToWash = dogNames.length;
+	while (dogsToWash > 0) {
+		console.log("I have " + dogsToWash + " dogs left to wash.");
+		dogsToWash--;
+		var dogName = dogNames[dogsToWash],
+			minutesThisDog = minutesPerDog[dogsToWash];
+		washOneDog(dogName, minutesThisDog);
+	} // for dogsToWash
+
+}; // washAllDogs
 
 var washOneDog = function(dogName, minutesThisDog){
 	console.log("Starting to wash " + dogName + " for " + minutesThisDog + " minutes.");
 	for (var minutes = 0; minutes < minutesThisDog; minutes +=5) {
 		var minutesRemain = minutesThisDog - minutes;
-		console.log(minutes + " done, " + minutesRemain + " to go!");
+		console.log(minutes + " minutes done, " + minutesRemain + " to go!");
 	}
 	console.log ("I'm done with " + dogName + ".");
-
 };
 
-var washAllDogs = function(dogNames, minutesPerDog) {
-	for (var dogNumber = 0; dogNumber < dogNames.length; dogNumber++) {
-		var dogName = dogNames[dogNumber],
-			minutesThisDog = minutesPerDog[dogNumber];
-		washOneDog(dogName, minutesThisDog);
+
+/*
+var washAllDogs = function() {
+	var dogsRemaining = dogNames.length;
+	while (dogsRemaining > 0) {
+		console.log("I have " + dogsRemaining + " number of dogs left to wash.");
+		dogsRemaining--;
 	} // for dogNumber
 }; // washAllDogs
-
-washAllDogs(dogNamesWithSpaces, wholeMinutesPerDog);
+*/
+washAllDogs(dogNames, wholeMinutesPerDog);
 
