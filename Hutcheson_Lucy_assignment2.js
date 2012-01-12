@@ -7,37 +7,73 @@
  */
 
 // Initial variables
-var boy = "Jason",
-	girl = "Lucy",
-	guam = "Guam, which is \"Where America's Day Begins\"",
-	numberOfRings = 1,
-	girlAndDaughter = 2,
-	LetsDoThis = true
-;
 
-// Initial output
-console.log(boy, " and ", girl, " have been friends for years. ");
-console.log(girl, "'s family includes her daughter, Laury, making it a family of ", girlAndDaughter, ". ");
-console.log(boy, " leaves ", guam, " and goes to Texas for vacation. ");
-console.log(boy, " buys ", numberOfRings, " engagement ring to propose to ", girl, ". ");
-console.log("Should ", boy, " go back to Guam and propose to ", girl, "? ", LetsDoThis);
+/*var pi = 3.14159;
+var radius = 5;
 
+var getArea = function (r) {
+	var area = r * r * pi;
+	return ;
+};
 
-if (LetsDoThis) {
-	if (numberOfRings > 0) {
-		console.log(boy, "says, \"Will you marry me?\" ");
-		newFamilySize = girlAndDaughter + 1;
-		console.log("If she says yes, their new family size will be", newFamilySize, ".  She'll probably say yes.");
-	} else {
-		console.log("Um.. I'll come back later. I don't have the engagement ring. ");
-	}
-} else {
-	if (girl === "Lucy") {
-		console.log(girl, " flies to Texas to get proposed to. ");
-	} else {
-		reassure = "Aww.." + boy + " there's only one girl for you. ";
-		console.log(reassure);
-	}
+var reportArea = function(name,area,message){
+	console.log(name + "'s circle has " + area + " area, and " + message);
 }
 
-alert("Will Lucy Get Engaged?");
+var area = getArea(60);
+reportArea('Ceiling cat', area, 'is all seeing');
+
+*/
+
+var buyMilk = function(givenCash) {
+	var pricePerGallon = 3,
+		wholeGallons;
+	if (givenCash < pricePerGallon) {
+		console.log("That's not enough to buy anything!");
+		wholeGallons = 0;
+	} else { 
+		wholeGallons = Math.floor(givenCash / pricePerGallon);
+	}
+	return wholeGallons;
+};
+var gotGallons = buyMilk(1);
+console.log("Thanks for buying " + gotGallons + " gallons of milk!");
+
+
+var getGreetingByName = function(name) {
+	var currentHour = (new Date()).getHours(),
+		timeOfDay, greeting;
+	if (currentHour < 12) { timeOfDay = "morning"; }
+	else if (currentHour < 17) { timeOfDay = "afternoon"; }
+	else { timeOfDay = "evening"; }
+	greeting = "Good " + timeOfDay + ", " + name + "!";
+	return(greeting);
+};
+var fullGreeting = getGreetingByName("Lucy");
+console.log(fullGreeting);
+
+
+
+var dogNamesWithSpaces = ['Percy', 'Fifi', 'Butch', 'Samson'],
+	wholeMinutesPerDog = [ 45, 20, 30, 60 ];
+
+var washOneDog = function(dogName, minutesThisDog){
+	console.log("Starting to wash " + dogName + " for " + minutesThisDog + " minutes.");
+	for (var minutes = 0; minutes < minutesThisDog; minutes +=5) {
+		var minutesRemain = minutesThisDog - minutes;
+		console.log(minutes + " done, " + minutesRemain + " to go!");
+	}
+	console.log ("I'm done with " + dogName + ".");
+
+};
+
+var washAllDogs = function(dogNames, minutesPerDog) {
+	for (var dogNumber = 0; dogNumber < dogNames.length; dogNumber++) {
+		var dogName = dogNames[dogNumber],
+			minutesThisDog = minutesPerDog[dogNumber];
+		washOneDog(dogName, minutesThisDog);
+	} // for dogNumber
+}; // washAllDogs
+
+washAllDogs(dogNamesWithSpaces, wholeMinutesPerDog);
+
