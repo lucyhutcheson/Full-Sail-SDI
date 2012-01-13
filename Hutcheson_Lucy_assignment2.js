@@ -24,7 +24,7 @@ greetStylist(dogStylist);
 
 var checkForDogs = function(dogStylist, weHaveDogs) {
 	if (weHaveDogs === true) {
-		console.log("Okay " + dogStylist + ", we have dogs to wash today.");
+		console.log("Okay " + dogStylist + ", it looks like we have dogs to wash today.");
 	} else {
 		console.log("We have no dogs to wash today.");
 	}
