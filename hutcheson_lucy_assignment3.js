@@ -121,7 +121,6 @@ var receivedjson = JSON.parse(jsonstring);
 console.log(receivedjson);
 
 
-
 // constructor is a function that builds objects, Module pattern
 var dogClient = function(name) {
 	// private
@@ -170,7 +169,10 @@ var employee = {
 	announce: function(message) {console.log(message)},
 	washDog:	function(dogName){},
 	getDog:		function(){	},
-	getRealName: function(){},
+	getRealName: function(){
+		var realName = employee.realName;
+		return realName;
+	},
 	salon: {},
 	dogNumber: 8};
 	
