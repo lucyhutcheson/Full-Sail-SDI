@@ -19,13 +19,156 @@
  * Each dog has a certain diet.
  */
 
-// Global variables
-var dogStylist = "Emily",
-	daysWorking = 8,
-	weHaveDogs = true,
-	dogNames = ['Percy', 'Fifi', 'Butch', 'Samson'],
-	wholeMinutesPerDog = [ 15, 20, 30, 10 ];
+// JSON Data
+var jsonDogData = {
+	"dogs" : [
+		{
+			"uuid": "520",
+			"name": "Percy",
+			"diet" : "Purina"
+		},
+		{
+			"uuid": "521",
+			"name": "Fifi",
+			"diet" : "Eukanuba"
+		},
+		{
+			"uuid": "522",
+			"name": "Butch",
+			"diet" : "Science Diet"
+		},
+		{
+			"uuid": "523",
+			"name": "Samson",
+			"diet" : "Iams"
+		}
+	]
+};
+// take javascript object and make it a string
+var jsonstring = JSON.stringify(jsonDogData);
 
+// take the string and make it a javascript object
+var receivedjson = JSON.parse(jsonstring);
+
+console.log(receivedjson["dogs"][0].name);
+
+// Global Variables
+var dogStylist = "Mary",
+	dogNumber = receivedjson["dogs"].length;
+	dogNames = function(){
+		for (var n=0; n < receivedjson["dogs"].length; n++) {
+			var name = receivedjson["dogs"][n].name;
+			return name; // return string
+		}
+	},
+	weHaveDogs = true,
+	washTimePerDog = [ 15, 20, 30, 10 ];
+
+// my object
+var dogStylist = {
+		realName:	"Mary Christmas",// property
+		position:	"Dog Stylist",
+		married:	true,
+		jobs:		["Lulu’s Pampered Pet Salon", "Pampered Chef Consultant"],
+		announce: 	function(message) {
+			console.log(message);
+		},
+		checkDogs: function(dogNumber) {
+			if (dogNumber > 0){
+				var dogsToFeed = "Let's get started! Our total dogs to feed today is " + dogNumber + ".";
+				console.log(dogsToFeed);
+			} else {
+				var dogsToFeed = "We have no dogs today."
+				console.log(dogsToFeed);
+			};
+		},
+		getRealName: function(){
+			var realName = dogStylist.realName;
+			return realName;
+		},
+		feedDog: function(name, diet){
+			var preparedFood = "Add " + diet + " dog bowl.";
+			return preparedFood;
+		},
+		cleanMess: function(){}
+	},
+	dog = {
+		getFood: function(name,food) {
+			var dogStomach = [];
+			var eatFood = function(item) {
+				if (item === food) {
+					dogStomach.push(item);
+				} else {
+					console.log("I'm sorry.  You are not allowed to feed this dog food that is not in their diet.");
+				}
+			};
+			var processFood = function() {
+				for (var n=0; n < feedDog.length; n++) {
+					var dogDiet = name + " was fed " + dogStomach[n] + ".";
+					return dogDiet; // return string
+				}
+			};
+			var getName = function(){return name;};
+			return { //public, this is my object
+				"eatFood": eatFood,
+				"processFood": processFood
+			};
+		},
+		makeAMess: function(food) {
+			var dogMess = food + " all over the floor.";
+			console.log(dogMess);
+		}
+	};
+	
+dogStylist.checkDogs(dogNumber);
+dogStylist.announce("Here's their information.");
+var getData = function(json) {
+	var i = 0;
+	while (i<json.dogs.length){
+		var dog = json.dogs[i];
+		console.log("Client ID: " + dog.uuid + ", Name: " + dog.name + ", Diet: " + dog.diet);
+		i++;
+	};
+};
+getData(jsonDogData);
+
+var myName = dogStylist.getRealName(); //accessor method
+dogStylist.announce("Well I'm determined to finish all these dogs or my name isn't " + myName + "!");
+
+dogStylist.feedDog("Percy", "Purina"); //mutator + procedure method
+var mess = dog.makeAMess("Purina"); //function mehtod
+dogStylist.cleanMess(mess); //object argument
+	
+
+var percy 	= dog.getFood(dogNames[0],"Purina");
+
+//api: application programming interface
+percy.eatFood("oranges");
+percy.eatFood("Purina");
+
+console.log(percy.processFood());
+console.log(percy.name()); // getter, accessor
+console.log(percy.getDogDiet()); // getter, accessor
+
+
+
+/*
+
+// take the string and make it a javascript object
+var receivedjson = JSON.parse(jsonstring);
+console.log(receivedjson);
+
+// take javascript object and make it a string
+var jsonstring = JSON.stringify(jsonDogData);
+console.log(jsonstring);
+
+* 
+* */
+
+
+
+
+/*
 var greetStylist = function(dogStylist) {
 	if (dogStylist === 'Emily') {
 		console.log("Welcome " + dogStylist + "! Let's check if we have any dogs to wash today.");
@@ -44,6 +187,15 @@ var checkForDogs = function(dogStylist, weHaveDogs) {
 	return(weHaveDogs);
 };
 checkForDogs(dogStylist, weHaveDogs);
+
+var getData = function(json) {
+	for (var i=0; i<json.dogs.length;i++){
+		var dog = json.dogs[i];
+		console.log("Client ID: " + dog.uuid + ", Name: " + dog.name + ", Diet: " + dog.diet);
+	}
+};
+getData(jsonDogData);
+
 
 var washAllDogs = function(dogNames, minutesPerDog) {
 	var dogsToWash = dogNames.length;
@@ -75,114 +227,8 @@ var sayMessage = function(dogStylist, dogName) {
 	message = ("\"You're all squeeky clean now, " + dogName + "!\" says " + dogStylist);
 	return(message);
 }
-washAllDogs(dogNames, wholeMinutesPerDog);
+washAllDogs(dogNames, washTimePerDog);
 
-
-
-var json = {
-	"dogs" : [
-		{
-			"uuid": "520",
-			"name": "Percy",
-			"diet" : "Purina"
-		},
-		{
-			"uuid": "521",
-			"name": "Fifi",
-			"diet" : "Eukanuba"
-		},
-		{
-			"uuid": "522",
-			"name": "Butch",
-			"diet" : "Science Diet"
-		},
-		{
-			"uuid": "522",
-			"name": "Samson",
-			"diet" : "Iams"
-		}
-	]
-}
-
-var handleData = function(json) {
-	for (var i=0; i<json.dogs.length;i++){
-		var dog = json.dogs[i];
-		console.log("Client ID: " + dog.uuid + ", Name: " + dog.name + ", Diet: " + dog.diet);
-	}
-};
-handleData(json);
-
-// take javascript object and make it a string
-var jsonstring = JSON.stringify(json);
-console.log(jsonstring);
-
-// take the string and make it a javascript object
-var receivedjson = JSON.parse(jsonstring);
-console.log(receivedjson);
-
-
-// constructor is a function that builds objects, Module pattern
-var dogClient = function(name) {
-	// private
-	var dogStomach = [];
-	var crew = [];
-	var feedDog = function(item) {
-		if (item !== "dog food") {
-			dogStomach.push(item);
-		} else {
-			console.log("Not allowed to feed dog non-dog food!");
-		}
-	};
-	var dogDiet = function() {
-		for (var n=0; n < feedDog.length; n++) {
-			console.log(name + " cargo " + n + ": " + dogStomach[n] + ".");
-		}
-	};
-	var getName = function(){return name;};
-	return { //public
-		"name": getName,
-		"feedDog": feedDog,
-		"dogDiet": dogDiet
-	};
-};
-var percy 	= dogClient("Percy");
-var fifi 	= dogClient("Fifi");
-var butch 	= dogClient("Butch");
-var samson	= dogClient("Samson");
-
-//api: application programming interface
-percy.feedDog("oranges");
-percy.feedDog("elephants");
-percy.dogDiet();
-console.log(percy);
-console.log(percy.name()); // getter, accessor
-
-
-
-
-
-var employee = {
-	realName:	"Emily Dickinson",
-	position:	"Dog Stylist",
-	married:	true,
-	jobs:		["Lulu’s Pampered Pet Salon", "Pampered Chef Consultant"],
-	announce: function(message) {console.log(message)},
-	washDog:	function(dogName){},
-	getDog:		function(){	},
-	getRealName: function(){
-		var realName = employee.realName;
-		return realName;
-	},
-	salon: {},
-	dogNumber: 8};
-	
-employee.announce("Our total dogs to wash today is " + employee.dogNumber + ".");	
-var myName = employee.getRealName(); //accessor method
-employee.announce("Well I'm determined to finish all these dogs or my name isn't " + myName + "!");
-employee.washDog(dogNumber); //mutator + procedure method
-var mess = employee.dropsBucket(); //function mehtod
-employee.cleanMess(mess, job); //object argument
-	
 
 
 
@@ -227,4 +273,4 @@ student["sayHi"]();
 for (var key in student) {
 	console.log("key: " + key + ", value: ", student[key]);
 };
-
+*/
