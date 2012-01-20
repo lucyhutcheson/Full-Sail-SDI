@@ -53,7 +53,7 @@ var receivedjson = JSON.parse(jsonstring);
 
 // Global Variables
 var dogStylist = "Mary",
-		dogNumber = receivedjson["dogs"].length;
+		dogNumber = receivedjson["dogs"];
 		anyDogsToday = true;
 
 
@@ -71,29 +71,30 @@ var dogStylist = {
 			var dogStatus = anyDogsToday;
 			if (dogStatus === true) {
 				dogStylist.announce("It's " + dogStatus + ".  We have dogs today.");
-				dogStylist.countDogs(dogStatus);
+				dogStylist.countDogs(dogStatus, dogNumber);
 			} else {
 				dogStylist.announce("It's " + dogStatus + ".  We don't have dogs today.");
 			};
 		},
-		countDogs: function(dogStatus) {
+		// method: procedure
+		countDogs: function(dogStatus, dogNumber) {
 			if (dogStatus === true) {
 				dogStylist.announce("Let's get started! We have ");
-				for (var n=0; n <= dogNumber; n++){
+				for (var n=0; n <= dogNumber.length; n++){
 					var dogsToFeed = n;
 					dogStylist.announce(dogsToFeed);
 				}
 				dogStylist.announce(" dogs to feed today.");
+				return dogStatus;
 			} else {
 					dogStylist.announce("We have no dogs today. ");
 			};
 		},
-		// method: accessor
 		getRealName: function(name){
 			var realName = name;
 			return realName;
 		},
-		// method: function
+		// method: accessor
 		getData: function(json) {
 			var i = 0;
 			while (i<json.dogs.length){
@@ -101,6 +102,7 @@ var dogStylist = {
 				dogStylist.announce("Client ID: " + dog.uuid + ", Name: " + dog.name + ", Diet: " + dog.diet);
 				i++;
 			};
+			return json;
 		},
 		getDogs: function() {
 			for (var n=0; n < receivedjson["dogs"].length; n++) {
@@ -122,12 +124,16 @@ var dogStylist = {
 			var preparedFood = "Time to add " + diet + " to the dog bowl for " + name + ".";
 			dogStylist.announce(preparedFood);
 		},
+		// method: function
 		cleanMess: function(mess){
 			dogStylist.announce("Aww man. Now I have to clean because " + mess);
 			var mess = mess.length;
 			for (var messCleaned = 0; messCleaned < mess; messCleaned +=8) {
-				var messLeft = mess - messCleaned;
-				dogStylist.announce(messCleaned + " mess cleaned up, " + messLeft + " to go!");
+				dogStylist.announce(messCleaned + " mess cleaned up.");
+				if (mess > messCleaned) {
+					var messLeft = mess - messCleaned;
+					dogStylist.announce(messLeft + " more to go!");
+				};
 			}
 			dogStylist.announce("Phew!  I'm done.  Time for lunch! I'll see the rest of you when I get back.");
 
@@ -149,7 +155,6 @@ dogStylist.announce("Well I'm determined to finish at least one dog before lunch
 dogStylist.getDogs();
 dogStylist.feedDog("Percy", "Purina"); //mutator + procedure method
 var mess = dog.makeAMess("Percy", "Purina"); //function method
-console.log()
 dogStylist.cleanMess(mess); //object argument
 	
 
