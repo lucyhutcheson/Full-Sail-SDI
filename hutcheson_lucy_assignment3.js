@@ -53,8 +53,8 @@ var receivedjson = JSON.parse(jsonstring);
 
 // Global Variables
 var dogStylist = "Mary",
-	dogNumber = receivedjson["dogs"].length;
-	anyDogsToday = true;
+		dogNumber = receivedjson["dogs"].length;
+		anyDogsToday = true;
 
 
 // my object
@@ -68,16 +68,16 @@ var dogStylist = {
 			console.log(announcement);
 		},
 		checkDogs: function(anyDogsToday) {
-			if (anyDogsToday) {
-				return true;
-				countDogs();
+			var dogStatus = anyDogsToday;
+			if (dogStatus === true) {
+				dogStylist.announce("It's " + dogStatus + ".  We have dogs today.");
+				dogStylist.countDogs(dogStatus);
 			} else {
-				return false;
-			}
-
+				dogStylist.announce("It's " + dogStatus + ".  We don't have dogs today.");
+			};
 		},
-		countDogs: function() {
-			if (checkDogs) {
+		countDogs: function(dogStatus) {
+			if (dogStatus === true) {
 				dogStylist.announce("Let's get started! We have ");
 				for (var n=0; n <= dogNumber; n++){
 					var dogsToFeed = n;
@@ -125,7 +125,6 @@ var dogStylist = {
 		cleanMess: function(mess){
 			dogStylist.announce("Aww man. Now I have to clean because " + mess);
 			var mess = mess.length;
-			
 			for (var messCleaned = 0; messCleaned < mess; messCleaned +=8) {
 				var messLeft = mess - messCleaned;
 				dogStylist.announce(messCleaned + " mess cleaned up, " + messLeft + " to go!");
@@ -141,7 +140,6 @@ var dogStylist = {
 			return dogMess;
 		}
 	};
-	
 dogStylist.announce("Welcome to " + dogStylist.jobs[0] + "!  I am a " + dogStylist.position + ".");
 dogStylist.checkDogs(anyDogsToday);
 dogStylist.announce("Here's their information.");
