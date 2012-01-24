@@ -1,5 +1,5 @@
 html {
-    background: #ddcdcd url('http://db.tt/hjNhlmpq') no-repeat center top;
+    background: #ddcdcd url('http://db.tt/1vIcpZVI') no-repeat center top;
 }
 body {
     font-family: Georgia, serif;
@@ -31,4 +31,7 @@ h2 {
 h1 + h2 {
     margin-top: -2em;
     padding-top: 0;
+}
+.right {
+	text-align: right;
 }
