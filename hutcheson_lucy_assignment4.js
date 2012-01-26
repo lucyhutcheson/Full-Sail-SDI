@@ -79,7 +79,7 @@ var ninjaLib = ninjaLibrary();
 ninjaLib.signal("This is a message");
 
 var phoneNumber = "1234567890";
-
+var email = "lucygmail.com";
 var stringLibrary = function(phoneNumber) {
 	var validatePhone = function(phoneNumber) {
 		 if (phoneNumber.indexOf("-") === -1) {
@@ -92,10 +92,20 @@ var stringLibrary = function(phoneNumber) {
 		 	return validNumber;
 		 };
 	};
+	var validateEmail = function(email) {
+		if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+			alert("Email address is invalid.  Please try again.");
+		};
+	};
 	return {
-		"validatePhone" : validatePhone
+		"validatePhone" : validatePhone,
+		"validateEmail" : validateEmail
 	};
 };
 var stringLib = stringLibrary();
-stringLib.validatePhone(phoneNumber); // return validated number
+var validNumber = stringLib.validatePhone(phoneNumber); // return validated number
 console.log(validNumber);
+
+stringLib.validateEmail(email); // return if email is valid
+
+
