@@ -79,15 +79,24 @@ var mathLibrary = function(){
 			return validAmount;
 		};
 	};
+	var  stringToNumber = function(stringNumber) {
+		var number = Number(stringNumber);
+		return number;
+	}
 	return {
-		"validateCurrency" : validateCurrency
+		"validateCurrency" : validateCurrency,
+		"stringToNumber" : stringToNumber
 	}
 };
 var amount = "5.125";
+var number = "42";
 var mathLib = mathLibrary();
 
-var validCurrency = mathLib.validateCurrency(amount); // return valid url
+var validCurrency = mathLib.validateCurrency(amount); // return valid currency
 console.log(validCurrency);
+
+var validNumber = mathLib.stringToNumber(number); // return valid currency
+console.log(validNumber);
 
 
 // String Library
