@@ -60,26 +60,38 @@ var answer = (Math.random() * 10) + 1;
 console.log(answer);
 console.log(Math.floor(answer));
 
-
-
-// LIBRARY - Revealing Module Pattern
-var ninjaLibrary = function () {
-    // TODO: add some private variables here
-    var throwingStars, toeShoes;
-    // TODO: add some private methods here
-    var signal = function (message) {};
-    // TODO: reveal the public methods here
-    return {
-        "signal" : signal
-    };
+// Math Library
+var mathLibrary = function(){
+	var validateCurrency = function(amount) {
+		var start = amount.indexOf(".");
+		var end = amount.length;
+		if (amount.indexOf(".") === -1) {
+			var validAmount = (amount + ".00");
+			return validAmount;
+		} else if (amount.substring(start, end).length < 2){
+			var validAmount = (amount + "00");
+			return validAmount;
+		} else if (amount.substring(start,end).length < 3 ){
+			var validAmount = (amount + "0");
+			return validAmount;
+		} else {
+			var validAmount = (Math.round(amount*100)/100);
+			return validAmount;
+		};
+	};
+	return {
+		"validateCurrency" : validateCurrency
+	}
 };
+var amount = "5.125";
+var mathLib = mathLibrary();
 
-// this is how you use it
-var ninjaLib = ninjaLibrary();
-ninjaLib.signal("This is a message");
+var validCurrency = mathLib.validateCurrency(amount); // return valid url
+console.log(validCurrency);
 
 
-var stringLibrary = function(phoneNumber) {
+// String Library
+var stringLibrary = function() {
 	var validatePhone = function(phoneNumber) {
 		 if (phoneNumber.indexOf("-") === -1) {
 		 	var areaCode = phoneNumber.substring(0,3);
