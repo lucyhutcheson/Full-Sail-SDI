@@ -78,8 +78,7 @@ var ninjaLibrary = function () {
 var ninjaLib = ninjaLibrary();
 ninjaLib.signal("This is a message");
 
-var phoneNumber = "1234567890";
-var email = "lucygmail.com";
+
 var stringLibrary = function(phoneNumber) {
 	var validatePhone = function(phoneNumber) {
 		 if (phoneNumber.indexOf("-") === -1) {
@@ -95,17 +94,56 @@ var stringLibrary = function(phoneNumber) {
 	var validateEmail = function(email) {
 		if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
 			alert("Email address is invalid.  Please try again.");
+		} else {
+			return email;
 		};
+	};
+	var validateURL = function(url) {
+		if (url.substring(0,4) === "http" || url.substring(0,5) === "https") {
+			return url;
+		} else {
+			alert("URL is invalid. Please try again.");
+		}
+	};
+	var capitalize = function(myString) {
+		var myStringLength = myString.length;
+		var wordPieces = myString.split(" ");
+		var capitalizedWords = [];
+		while (capitalizedWords.length < wordPieces.length) {
+			for (var i=0;i<wordPieces.length;i++) {
+				var firstLetter = wordPieces[i].substring(0,1); // get first letter
+				var capitalLetter = firstLetter.toUpperCase();
+				var restOfWord = wordPieces[i].substring(1, wordPieces[i].length);
+				var newWord = capitalLetter + restOfWord;
+				capitalizedWords.push(newWord);
+			}
+		};
+		var capitalizedString = capitalizedWords.join(" ");
+		return capitalizedString;
 	};
 	return {
 		"validatePhone" : validatePhone,
-		"validateEmail" : validateEmail
+		"validateEmail" : validateEmail,
+		"validateURL" : validateURL,
+		"capitalize" : capitalize
 	};
 };
+
+// test variables
+var phoneNumber = "1234567890";
+var email = "lucyhutcheson@fullsail.edu";
+var url = "http://www.fullsail.edu";
+var myString = "full sail online";
+
 var stringLib = stringLibrary();
 var validNumber = stringLib.validatePhone(phoneNumber); // return validated number
 console.log(validNumber);
 
-stringLib.validateEmail(email); // return if email is valid
+var validEmail = stringLib.validateEmail(email); // return valid email
+console.log(validEmail);
 
+var validURL = stringLib.validateURL(url); // return valid url
+console.log(validURL);
 
+var capitalizedString = stringLib.capitalize(myString);
+console.log(capitalizedString);
