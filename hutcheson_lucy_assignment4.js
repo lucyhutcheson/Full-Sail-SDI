@@ -3,62 +3,9 @@
  * @author Lucy Hutcheson
  * Date: 2012-01-26
  * Created for:  SDI Online
- * 
+ * Custom Libraries
  */
 
-var makeSandwich = function (bread, meat, toppings) {
-    //  Fill in working code here that builds a sandwich
-    return { };
-}
-
-var pbj = makeSandwich("white", "peanut butter", ["grape jelly"]);
-// pbj is an object that will eventually do something useful
-
-
-// STRING
-// each character in the string are represented by numerical indexes
-// index 1 = "o"
-var myString = "Some Text";
-var length = myString.length
-console.log(length);
-
-//myString.substring(from, to) in index values
-var substring = myString.substring(0,4);
-console.log(substring); // returns "Some"
-
-//myString.charAt(n) n=index will return the character
-var character = myString.charAt(3);
-console.log(character); // returns "e"
-
-// indexOf will return the index.  if no index exists, it will return -1
-var index = myString.indexOf("e");
-console.log(index); // returns 3
-
-// MATH
-// round 
-var answer = Math.round(2.5);
-console.log(answer);
-
-// round down
-var answer = Math.floor(2.5);
-console.log(answer);
-
-// round up
-var answer = Math.ceil(2.5);
-console.log(answer);
-
-// random between 0 and whatever number it is multiplied by 
-// this will give a random number between 0 and 9
-var answer = (Math.random() * 10) ;
-console.log(answer);
-
-// this will round the number down to a whole number
-console.log(Math.floor(answer));
-
-// this will shift the answer from between 0-9 to 1-10
-var answer = (Math.random() * 10) + 1;
-console.log(answer);
-console.log(Math.floor(answer));
 
 // Math Library
 var mathLibrary = function(){
@@ -82,12 +29,14 @@ var mathLibrary = function(){
 	var  stringToNumber = function(stringNumber) {
 		var number = Number(stringNumber);
 		return number;
-	}
+	};
 	return {
 		"validateCurrency" : validateCurrency,
 		"stringToNumber" : stringToNumber
-	}
+	};
 };
+
+// test math variables
 var amount = "5.125";
 var number = "42";
 var mathLib = mathLibrary();
@@ -95,8 +44,9 @@ var mathLib = mathLibrary();
 var validCurrency = mathLib.validateCurrency(amount); // return valid currency
 console.log(validCurrency);
 
-var validNumber = mathLib.stringToNumber(number); // return valid currency
+var validNumber = mathLib.stringToNumber(number); // return valid number
 console.log(validNumber);
+
 
 
 // String Library
@@ -120,7 +70,7 @@ var stringLibrary = function() {
 		};
 	};
 	var validateURL = function(url) {
-		if (url.substring(0,4) === "http" || url.substring(0,5) === "https") {
+		if (url.substring(0,7) === "http://" || url.substring(0,8) === "https://") {
 			return url;
 		} else {
 			alert("URL is invalid. Please try again.");
@@ -155,8 +105,8 @@ var phoneNumber = "1234567890";
 var email = "lucyhutcheson@fullsail.edu";
 var url = "http://www.fullsail.edu";
 var myString = "full sail online";
-
 var stringLib = stringLibrary();
+
 var validNumber = stringLib.validatePhone(phoneNumber); // return validated number
 console.log(validNumber);
 
@@ -166,5 +116,5 @@ console.log(validEmail);
 var validURL = stringLib.validateURL(url); // return valid url
 console.log(validURL);
 
-var capitalizedString = stringLib.capitalize(myString);
+var capitalizedString = stringLib.capitalize(myString); // return capitalized string
 console.log(capitalizedString);
